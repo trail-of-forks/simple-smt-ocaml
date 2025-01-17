@@ -311,7 +311,20 @@ let bv_lshr x y = app_ "bvlshr" [x;y]
 (** Arithemti shift right (copies most significant bit). *)
 let bv_ashr x y = app_ "bvashr" [x;y]
 
+(** Unsigned multiplication overflow *)
+let bv_umulo x y = app_ "bvumulo" [x; y]
 
+(** Signed multiplication overflow *)
+let bv_smulo x y = app_ "bvsmulo" [x; y]
+
+(** Negation overflow *)
+let bv_nego x = app_ "bvnego" [x]
+
+(** Unsaigned addition overflow *)
+let bv_uaddo x y = app_ "bvuaddo" [x; y] 
+
+(** Signed addition overflow *)
+let bv_saddo x y = app_ "bvsaddo" [x; y] 
 
 (** {1 Arrays} *)
 
