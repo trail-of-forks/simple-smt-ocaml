@@ -326,6 +326,12 @@ let bv_uaddo x y = app_ "bvuaddo" [x; y]
 (** Signed addition overflow *)
 let bv_saddo x y = app_ "bvsaddo" [x; y] 
 
+(** Bit vector to integer *)
+let bv_to_int e = app_ "bv2int" [e]
+
+(** Integer to bit vector *)
+let int_to_bv i x = app (ifam "int2bv" [i]) [x]
+
 (** {1 Arrays} *)
 
 (** [t_tarray kt vt] is the type of arrays with keys [kt] and values [vt] *)
