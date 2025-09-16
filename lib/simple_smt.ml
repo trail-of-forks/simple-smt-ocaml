@@ -253,7 +253,7 @@ let bv_slt x y = app_ "bvslt" [x;y]
 let bv_sleq x y = app_ "bvsle" [x;y]
 
 (** Bit vector concatenation. *)
-let bv_concat x y = app_ "concat" [x;y]
+let bv_concat args = app_ "concat" args
 
 (** Extend to the signed equivalent bitvector by the given number of bits. *)
 let bv_sign_extend i x = app (ifam "sign_extend" [i]) [x]
