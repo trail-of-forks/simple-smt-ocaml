@@ -332,6 +332,24 @@ let bv_to_int e = app_ "bv2int" [e]
 (** Integer to bit vector *)
 let int_to_bv i x = app (ifam "int2bv" [i]) [x]
 
+(* Real to Floating Point *)
+let real_to_fp eb sb e = app (ifam "to_fp" [eb; sb]) [atom "RNE"; e]
+
+(* Floating Point to Real *)
+let fp_to_real e = app_ "fp.to_real" [e]
+
+(* Bitvector to Floating Point bitcast *)
+let ieee_bv_to_num e = 
+  (* For IEEE 754 single precision: 8 exponent bits, 24 significand bits *)
+  let fp_val = app (ifam "to_fp" [8; 24]) [e] in
+  fp_to_real fp_val
+
+(* Floating Point to Bitvector bitcast *)
+let num_to_ieee_bv i x = 
+  (* For IEEE 754 single precision: 8 exponent bits, 24 significand bits *)
+  let fp_val = real_to_fp 8 24 x in
+  app (ifam "fp.to_ieee_bv" [i]) [fp_val]
+
 (** {1 Arrays} *)
 
 (** [t_tarray kt vt] is the type of arrays with keys [kt] and values [vt] *)
